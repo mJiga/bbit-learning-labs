@@ -12,21 +12,20 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-
 class mqProducerInterface:
     def __init__(self, routing_key: str, exchange_name: str) -> None:
         # Save parameters to class variables
-
         # Call setupRMQConnection
         pass
 
     def setupRMQConnection(self) -> None:
         # Set-up Connection to RabbitMQ service
-
+        #Build our connection to the RMQ Connection.
+        #The AMPQ_URL is a string which tells pika the package the URL of our AMPQ service in this scenario RabbitMQ.
+        
         # Establish Channel
 
         # Create the exchange if not already present
-
         pass
 
     def publishOrder(self, message: str) -> None:
@@ -35,5 +34,4 @@ class mqProducerInterface:
         # Close Channel
 
         # Close Connection
-    
         pass
