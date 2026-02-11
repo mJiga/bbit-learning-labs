@@ -12,7 +12,7 @@ class mqConsumer(mqConsumerInterface):
         self.exchange_name = exchange_name
         self.queue_name = queue_name
 
-        self.setupRMQConnection
+        self.setupRMQConnection()
 
     def setupRMQConnection(self) -> None:
             # Set-up Connection to RabbitMQ 
@@ -25,7 +25,7 @@ class mqConsumer(mqConsumerInterface):
             # Create Queue if not already present
             self.channel.queue_declare(queue=self.queue_name)
             # Create the exchange if not already present
-            exchange = self.channel.exchange_declare(exchange=self.exchange_name)
+            self.exchange = self.channel.exchange_declare(exchange=self.exchange_name)
 
             # Bind Binding Key to Queue on the exchange
             self.channel.queue_bind(
@@ -44,7 +44,7 @@ class mqConsumer(mqConsumerInterface):
         channel.basic_ack(method_frame.delivery_tag, False)
 
         #Print message (The message is contained in the body parameter variable)
-        print(body)
+        print(body)  
     
 
     def startConsuming(self) -> None:
